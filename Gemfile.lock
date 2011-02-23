@@ -1,0 +1,23 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    git (1.2.5)
+    jeweler (1.5.2)
+      bundler (~> 1.0.0)
+      git (>= 1.2.5)
+      rake
+    mime-types (1.16)
+    moonshado-sms (1.1.0)
+      rest-client (= 1.6.0)
+      yajl-ruby (= 0.7.7)
+    rake (0.8.7)
+    rest-client (1.6.0)
+      mime-types (>= 1.16)
+    yajl-ruby (0.7.7)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  jeweler (>= 1.5.2)
+  moonshado-sms (>= 1.1.0)
