@@ -71,7 +71,7 @@ module Devise
       # calculate if the confirm time has not expired for this user.
 
       def active?
-        super && !sms_confirmation_required? || confirmed_sms? || confirmation_sms_period_valid?
+        !sms_confirmation_required? || confirmed_sms? || confirmation_sms_period_valid?
       end
 
       # The message to be shown if the account is inactive.
