@@ -1,5 +1,4 @@
-class Devise::SmsActivationsController < ApplicationController
-  include Devise::Controllers::InternalHelpers
+class Devise::SmsActivationsController < DeviseController
 
   # GET /resource/sms_activation/new
   def new
