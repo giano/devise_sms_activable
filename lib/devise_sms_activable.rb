@@ -21,7 +21,7 @@ module Devise
 
   # Set the smser reference object to access the smser.
   def self.sms_sender=(class_name)
-    @@sms_sender_ref = ActiveSupport::Dependencies.ref(class_name)
+    @@sms_sender_ref = ActiveSupport::Dependencies::Reference.new(class_name)
   end
   
   self.sms_sender = "Devise::SmsSender"
