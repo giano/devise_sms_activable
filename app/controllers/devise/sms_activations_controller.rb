@@ -38,8 +38,7 @@ class Devise::SmsActivationsController < DeviseController
   protected
   
     def build_resource(hash = nil)
-      hash ||= resource_params || {}
-      self.resource ||= super
+      self.resource = resource_class.new
     end
 
 end
