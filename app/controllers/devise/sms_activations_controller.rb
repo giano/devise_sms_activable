@@ -3,7 +3,7 @@ class Devise::SmsActivationsController < DeviseController
   # GET /resource/sms_activation/new
   def new
     build_resource({})
-    render_with_scope :new
+    render :new
   end
 
   # POST /resource/sms_activation
@@ -14,7 +14,7 @@ class Devise::SmsActivationsController < DeviseController
       set_flash_message :notice, :send_token, :phone => self.resource.phone
       redirect_to new_session_path(resource_name)
     else
-      render_with_scope :new
+      render :new
     end
   end
   
@@ -31,7 +31,7 @@ class Devise::SmsActivationsController < DeviseController
       set_flash_message :notice, :confirmed
       sign_in_and_redirect(resource_name, resource)
     else
-      render_with_scope :new
+      render :new
     end
   end
   
