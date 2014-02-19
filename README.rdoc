@@ -8,23 +8,23 @@ Ask the user his phone (and phone confirmation to double check) on registration 
 
 Install DeviseSmsActivable gem, it will also install dependencies (such as devise and warden):
 
-	gem install devise_sms_activable
+  gem install devise_sms_activable
 
 Add DeviseSmsActivable to your Gemfile (and Devise if you weren't using them):
-	
-	gem 'devise',           '>= 1.1.0'
-	gem 'devise_sms_activable', '~> 0.0.9'
-	
+  
+  gem 'devise',           '>= 1.1.0'
+  gem 'devise_sms_activable', '~> 0.0.9'
+  
 === Automatic installation
-	
+  
 Run the following generator to add DeviseSmsActivable’s configuration option in the Devise configuration file (config/initializers/devise.rb) and the sms sender class in your lib folder:
-	
-	rails generate devise_sms_activable:install
-	
+
+  rails generate devise_sms_activable:install
+  
 When you are done, you are ready to add DeviseSmsActivable to any of your Devise models using the following generator:
 
-	rails generate devise_sms_activable MODEL
-	
+  rails generate devise_sms_activable MODEL
+  
 Replace MODEL by the class name you want to add DeviseSmsActivable, like User, Admin, etc. This will add the :sms_activable flag to your model's Devise modules. The generator will also create a migration file (if your ORM support them). Continue reading this file to understand exactly what the generator produces and how to use it.
 
 == Configuring views
