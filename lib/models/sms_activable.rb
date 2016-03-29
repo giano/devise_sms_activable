@@ -16,7 +16,7 @@ module Devise
     #     use this to let your user access some features of your application without
     #     confirming the account, but blocking it after a certain period (ie 7 days).
     #     By default confirm_within is 0 days, so the user must confirm before entering.
-    #     If you want to allow user to use parts of the site and block others override 
+    #     If you want to allow user to use parts of the site and block others override
     #     sms_confirmation_required? and check manually on selected pages using the
     #     require_sms_activated! helper or sms_confirmed? property on record
     #
@@ -70,13 +70,13 @@ module Devise
       # is already confirmed, it should never be blocked. Otherwise we need to
       # calculate if the confirm time has not expired for this user.
 
-      def active?
-        !sms_confirmation_required? || confirmed_sms? || confirmation_sms_period_valid?
+      def active_for_authentication?
+        super && (!sms_confirmation_required? || confirmed_sms? || confirmation_sms_period_valid?)
       end
 
       # The message to be shown if the account is inactive.
       def inactive_message
-        !confirmed_sms? ? I18n.t(:"devise.sms_activations.unconfirmed_sms") : super
+        sms_confirmation_required? ? :unconfirmed_sms : super
       end
 
       # If you don't want confirmation to be sent on create, neither a code
