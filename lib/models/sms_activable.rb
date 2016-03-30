@@ -65,7 +65,7 @@ module Devise
         unless_sms_confirmed { send_sms_token }
       end
 
-      # Overwrites active? from Devise::Models::Activatable for sms confirmation
+      # Overwrites active_for_authentication? from Devise::Models::Activatable for sms confirmation
       # by verifying whether a user is active to sign in or not. If the user
       # is already confirmed, it should never be blocked. Otherwise we need to
       # calculate if the confirm time has not expired for this user.
@@ -76,7 +76,7 @@ module Devise
 
       # The message to be shown if the account is inactive.
       def inactive_message
-        sms_confirmation_required? ? :unconfirmed_sms : super
+        sms_confirmation_required? && !confirmed_sms? ? :unconfirmed_sms : super
       end
 
       # If you don't want confirmation to be sent on create, neither a code
