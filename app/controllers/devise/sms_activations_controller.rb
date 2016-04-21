@@ -5,6 +5,7 @@ class Devise::SmsActivationsController < DeviseController
     build_resource({})
   end
 
+  # POST /resource/sms_activation
   def create
     self.resource = resource_class.send_sms_token(params[resource_name])
     yield resource if block_given?
@@ -22,15 +23,16 @@ class Devise::SmsActivationsController < DeviseController
     build_resource({})
   end
 
+  # GET or POST /resource/sms_activation/consume?sms_token=abcdef
   def consume
     self.resource = resource_class.confirm_by_sms_token(params[resource_name][:sms_confirmation_token])
     yield resource if block_given?
 
     if resource.errors.empty?
       set_flash_message :notice, :confirmed if is_flashing_format?
-      respond_with_navigational(resource){ redirect_to after_sms_confirmation_path_for(resource_name, resource) }
+      respond_with resource, location: after_sms_confirmation_path_for(resource_name, resource)
     else
-      respond_with_navigational(resource.errors, status: :unprocessable_entity){ render :insert }
+      respond_with resource, action: :insert
     end
   end
 
