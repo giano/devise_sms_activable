@@ -3,8 +3,8 @@
 <%= form_for(resource, :as => resource_name, :url => sms_activation_path(resource_name), :html => { :method => :post }) do |f| %>
   <%= devise_error_messages! %>
 
-  <p><%= f.label :email %><br />
-  <%= f.email_field :email %></p>
+  <p><%= f.label :phone %><br />
+  <%= f.number_field :phone %></p>
 
   <p><%= f.submit "Resend SMS" %></p>
 <% end %>
